@@ -1,0 +1,20 @@
+[
+  {
+    "content": "Diagnose why dashboard only shows Australia and USA",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "Fix dashboard data loading to include all 8 countries",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "Test dashboard with all imported datasets",
+    "status": "completed",
+    "priority": "high",
+    "id": "3"
+  }
+]
