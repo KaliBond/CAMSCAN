@@ -1,11 +1,12 @@
 """CAMS Scoring Engine v3.0.
 
 Testable implementation of CAMS Instruction Set
-(v2.0 + v3.0 Emergent Protocol).
+(v2.0 + v3.0 Emergent Protocol), with AI scoring lookup support.
 """
 
 import csv
 from dataclasses import asdict, dataclass
+from pathlib import Path
 from typing import Dict, List, Optional
 
 # -------------------------------------------------------------------
@@ -30,6 +31,9 @@ ABSTRACTION_WEIGHT = 0.4
 
 # Divergence threshold for emergent vs formulaic bond
 DIVERGENCE_THRESHOLD = 3
+
+# Protocol reference for AI evidence-based scoring
+SCORING_PROTOCOL_PATH = Path(__file__).with_name("CAMS_SCORING_PROTOCOL_V2_1.md")
 
 
 class Column(list):
@@ -60,6 +64,37 @@ class CAMSDataFrame:
 
     def __str__(self) -> str:
         return "\n".join(str(row) for row in self._rows)
+
+
+# -------------------------------------------------------------------
+# AI LOOKUP SUPPORT (SCORING LAYER)
+# -------------------------------------------------------------------
+
+
+def load_scoring_protocol() -> str:
+    """Load CAMS Scoring Protocol v2.1 for AI-based node scoring prompts."""
+    return SCORING_PROTOCOL_PATH.read_text(encoding="utf-8")
+
+
+
+def build_ai_lookup_prompt(society: str, year: int, evidence: str) -> str:
+    """Build an LLM prompt for scoring-only CAMS lookup.
+
+    Returns a complete prompt containing protocol + evidence request.
+    """
+    protocol = load_scoring_protocol()
+    return (
+        f"{protocol}\n\n"
+        "---\n"
+        "## Lookup Request\n"
+        f"Society: {society}\n"
+        f"Year: {year}\n\n"
+        "Use the protocol above and score only the eight CAMS nodes.\n"
+        "Return only the CSV snippet with the required fields and exactly 8 rows.\n"
+        "Do not compute Node Value, Bond Strength, averages, or any derived metric.\n\n"
+        "### Evidence Context\n"
+        f"{evidence.strip()}\n"
+    )
 
 
 # -------------------------------------------------------------------

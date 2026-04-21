@@ -1,12 +1,17 @@
+from pathlib import Path
+
 import pytest
 
 from cams_scoring_engine import (
     CAMS_NODES,
+    SCORING_PROTOCOL_PATH,
     NodeMetrics,
+    build_ai_lookup_prompt,
     check_divergence,
     compute_node_value,
     compute_pairwise_bond,
     compute_standard_bs,
+    load_scoring_protocol,
     score_society,
 )
 
@@ -22,6 +27,24 @@ def sample_nodes():
         "Archive": NodeMetrics(7, 7, 4, 8, bs_native=6),
         "Flow": NodeMetrics(7, 7, 5, 7, bs_native=6),
     }
+
+
+def test_protocol_file_exists():
+    assert Path(SCORING_PROTOCOL_PATH).exists()
+
+
+def test_load_scoring_protocol_contains_required_section():
+    protocol = load_scoring_protocol()
+    assert "# CAMS Scoring Protocol v2.1" in protocol
+    assert "Do **not** calculate:" in protocol
+
+
+def test_build_ai_lookup_prompt_includes_context_and_constraints():
+    prompt = build_ai_lookup_prompt("USA", 1861, "Civil war escalation and rail mobilization.")
+    assert "Society: USA" in prompt
+    assert "Year: 1861" in prompt
+    assert "Return only the CSV snippet" in prompt
+    assert "Do not compute Node Value" in prompt
 
 
 def test_node_value_formula():
