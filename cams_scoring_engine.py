@@ -5,9 +5,12 @@ Testable implementation of CAMS Instruction Set
 """
 
 import csv
+import json
+import os
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Dict, List, Optional
+from urllib import request
 
 # -------------------------------------------------------------------
 # CONFIGURATION
@@ -95,6 +98,37 @@ def build_ai_lookup_prompt(society: str, year: int, evidence: str) -> str:
         "### Evidence Context\n"
         f"{evidence.strip()}\n"
     )
+
+
+def run_ai_lookup(
+    society: str,
+    year: int,
+    evidence: str,
+    model: str = "gpt-4.1-mini",
+) -> str:
+    """Call OpenAI Responses API and return raw CSV snippet from the model."""
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        raise ValueError("OPENAI_API_KEY is required")
+
+    prompt = build_ai_lookup_prompt(society, year, evidence)
+    payload = {
+        "model": model,
+        "input": prompt,
+    }
+
+    req = request.Request(
+        "https://api.openai.com/v1/responses",
+        data=json.dumps(payload).encode("utf-8"),
+        headers={
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+        },
+        method="POST",
+    )
+    with request.urlopen(req) as response:
+        body = json.loads(response.read().decode("utf-8"))
+    return body["output"][0]["content"][0]["text"]
 
 
 # -------------------------------------------------------------------
