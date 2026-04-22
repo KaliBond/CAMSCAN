@@ -1,4 +1,5 @@
 from pathlib import Path
+import json
 
 import pytest
 
@@ -12,6 +13,7 @@ from cams_scoring_engine import (
     compute_pairwise_bond,
     compute_standard_bs,
     load_scoring_protocol,
+    run_ai_lookup,
     score_society,
 )
 
@@ -45,6 +47,40 @@ def test_build_ai_lookup_prompt_includes_context_and_constraints():
     assert "Year: 1861" in prompt
     assert "Return only the CSV snippet" in prompt
     assert "Do not compute Node Value" in prompt
+
+
+def test_run_ai_lookup_requires_openai_api_key(monkeypatch):
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    with pytest.raises(ValueError, match="OPENAI_API_KEY is required"):
+        run_ai_lookup("USA", 1861, "evidence")
+
+
+def test_run_ai_lookup_calls_openai(monkeypatch):
+    class FakeResponse:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+        def read(self):
+            payload = {
+                "output": [
+                    {
+                        "content": [
+                            {
+                                "text": "Society,Year,Node,Coherence,Capacity,Stress,Abstraction",
+                            }
+                        ]
+                    }
+                ]
+            }
+            return json.dumps(payload).encode("utf-8")
+
+    monkeypatch.setenv("OPENAI_API_KEY", "test-key")
+    monkeypatch.setattr("cams_scoring_engine.request.urlopen", lambda _: FakeResponse())
+    result = run_ai_lookup("USA", 1861, "evidence", model="gpt-4.1-mini")
+    assert result.startswith("Society,Year,Node")
 
 
 def test_node_value_formula():
