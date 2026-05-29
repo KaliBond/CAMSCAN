@@ -14,13 +14,26 @@ Ensemble variant of the CAMNATIONS pipeline. Run five independent scoring passes
 | nation | string | yes | — | Society/nation to assess |
 | start_year | integer | yes | — | First year to assess |
 | end_year | integer | no | 2026 | Last year. Cap to 2026 if > 2026 |
-| n_scorers | integer | no | 5 | Independent passes. Range: 3–7 |
+| interval | string | no | yearly | Use `yearly` unless the user explicitly asks for `6_month` intervals |
+| n_scorers | integer | no | 5 | Independent passes. Range: 3–7; default is always exactly 5 |
 
 ### Validation rules
 - `n_scorers < 3` → fail with explicit error
 - `n_scorers > 7` → cap to 7
 - `start_year > end_year` → fail with explicit error
 - `end_year > 2026` → cap to 2026
+- If `end_year` is omitted, set it to 2026
+- If `interval` is omitted, use `yearly`
+- Only use `6_month` intervals when explicitly requested by the user
+
+## Time coverage rules
+- Default coverage is **every calendar year** from the mentioned `start_year` through 2026, inclusive.
+- If the user gives a start date/year but no end date/year, score `start_year, start_year + 1, ... , 2026`; do not stop early.
+- Do **not** hop across milestone years and later fill gaps. No decade sampling, representative-year sampling, or interpolation is allowed.
+- Every subsequent year in the range must be scored explicitly with all 8 nodes.
+- Use `6_month` intervals only when the user explicitly asks for six-month intervals; otherwise remain yearly.
+- For `6_month` intervals, score every half-year point from the mentioned start date through the specified end date, or through 2026 if no end date is specified. Do not skip half-year points and do not backfill inferred values.
+- The `n_scorers` default is always **5** unless the user explicitly supplies another valid value.
 
 ## Output contract
 Emit exactly two CSV code blocks in this order:
