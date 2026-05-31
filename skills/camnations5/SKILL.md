@@ -1,6 +1,6 @@
 ---
 name: camnations5
-description: Five-scorer ensemble CAMS assessment pipeline for a single nation across multiple years. Runs cams-scorer five times independently under an identical prompt, averages raw Coherence/Capacity/Stress/Abstraction at the node-year level, then runs cams-calc once on the mean scores. Outputs a long-format ensemble-mean CSV plus a companion envelope CSV capturing inter-scorer variance. Use this skill — even proactively — whenever the user says "CAMNATIONS5", "camnations5", "five-scorer CAMS", "ensemble CAMS", or asks for a scorer-robust, uncertainty-aware, or publication-ready version of a CAMNATIONS run. Does not replace camnations (v1); coexists with it.
+description: Five-scorer ensemble CAMS assessment pipeline for a single nation across multiple years. Runs cams-scorer five times independently under an identical prompt, averages raw Coherence/Capacity/Stress/Abstraction at the node-year level, then runs cams-calc once on the mean scores. Outputs a long-format ensemble-mean CSV plus a companion envelope CSV capturing inter-scorer variance. Use this skill — even proactively — whenever the user says "CAMNATIONS5", "camnations5", "/camnations5", "/camsnations5", "camsnations5", "five-scorer CAMS", "ensemble CAMS", or asks for a scorer-robust, uncertainty-aware, or publication-ready version of a CAMNATIONS run. Does not replace camnations (v1); coexists with it.
 ---
 
 # CAMNATIONS5 — Five-Scorer Ensemble CAMS Pipeline
@@ -34,6 +34,26 @@ Ensemble variant of the CAMNATIONS pipeline. Run five independent scoring passes
 - Use `6_month` intervals only when the user explicitly asks for six-month intervals; otherwise remain yearly.
 - For `6_month` intervals, score every half-year point from the mentioned start date through the specified end date, or through 2026 if no end date is specified. Do not skip half-year points and do not backfill inferred values.
 - The `n_scorers` default is always **5** unless the user explicitly supplies another valid value.
+
+## Invocation examples
+
+Treat slash-style invocations and common spelling variants as this same skill. For example:
+
+```text
+/camsnations5 australia 2015 to 2026
+```
+
+Parse that request as:
+
+| Field | Value |
+|-------|-------|
+| nation | Australia |
+| start_year | 2015 |
+| end_year | 2026 |
+| interval | yearly |
+| n_scorers | 5 |
+
+Then run the normal CAMNATIONS5 workflow with yearly coverage for every year 2015, 2016, ..., 2026; do not sample milestone years or fill gaps.
 
 ## Output contract
 Emit exactly two CSV code blocks in this order:
