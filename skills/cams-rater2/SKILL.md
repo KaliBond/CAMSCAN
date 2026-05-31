@@ -63,7 +63,7 @@ df['Node Value'] = (
 ).round(1)
 
 rows = []
-for year, group in df.groupby('Year', sort=True):
+for (society, year), group in df.groupby(['Society', 'Year'], sort=True):
     group = group.set_index('Node').reindex(NODE_ORDER).reset_index()
     if group[['Coherence', 'Capacity', 'Stress', 'Abstraction']].isna().any().any():
         continue
@@ -87,6 +87,8 @@ for year, group in df.groupby('Year', sort=True):
 out = pd.concat(rows)[
     ['Society','Year','Node','Coherence','Capacity','Stress','Abstraction','Node Value','Bond Strength']
 ]
+out['Node'] = pd.Categorical(out['Node'], categories=NODE_ORDER, ordered=True)
+out = out.sort_values(['Society', 'Year', 'Node']).reset_index(drop=True)
 ```
 
 ---
@@ -100,6 +102,7 @@ Society,Year,Node,Coherence,Capacity,Stress,Abstraction,Node Value,Bond Strength
 ```
 
 - All years. All 8 nodes per year. No truncation.
+- Sort output rows by `Society`, then `Year`, then canonical `Node` order: `Helm`, `Shield`, `Lore`, `Stewards`, `Craft`, `Hands`, `Archive`, `Flow`.
 - Node Value: 1 decimal place.
 - Bond Strength: 3 decimal places.
 - No files. No commentary. No `present_files`.
