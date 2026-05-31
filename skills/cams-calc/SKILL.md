@@ -11,4 +11,5 @@ Use this skill when a workflow needs downstream calculation from raw CAMS scores
 
 - Input columns: `Society,Year,Node,Coherence,Capacity,Stress,Abstraction`
 - Output columns: `Society,Year,Node,Coherence,Capacity,Stress,Abstraction,Node Value,Bond Strength`
+- Sort output rows by `Society`, then `Year`, then canonical `Node` order: `Helm`, `Shield`, `Lore`, `Stewards`, `Craft`, `Hands`, `Archive`, `Flow`
 - Equations and strict output behavior are defined in `skills/cams-rater2/SKILL.md`.

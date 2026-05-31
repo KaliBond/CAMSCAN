@@ -44,6 +44,7 @@ Society,Year,Node,Coherence,Capacity,Stress,Abstraction,Node Value,Bond Strength
 ```
 - Mean C/K/S/A across scorers, rounded to **1 decimal place**
 - Run `cams-calc` (or `cams-rater2`) exactly once on the mean scores to compute Node Value and Bond Strength
+- Sort rows by `Society`, then `Year`, then canonical `Node` order: `Helm`, `Shield`, `Lore`, `Stewards`, `Craft`, `Hands`, `Archive`, `Flow`
 
 2) **Block 2 — Envelope**
 ```csv
@@ -52,6 +53,7 @@ Society,Year,Node,C_sd,K_sd,S_sd,A_sd,V_range,V_min,V_max
 - Sample SD per dimension across passes (`ddof=1`)
 - Per-scorer Node Value: `V_i = C_i + K_i - S_i + 0.5*A_i`
 - Envelope: `V_min`, `V_max`, `V_range = V_max - V_min`
+- Sort rows by `Society`, then `Year`, then canonical `Node` order: `Helm`, `Shield`, `Lore`, `Stewards`, `Craft`, `Hands`, `Archive`, `Flow`
 
 ## Core workflow
 
@@ -61,7 +63,8 @@ Society,Year,Node,C_sd,K_sd,S_sd,A_sd,V_range,V_min,V_max
 4. If any pass has missing rows, use available rows cell-by-cell.
 5. If any cell has fewer than 3 contributing passes, fail the run and report failing cells.
 6. Run `cams-calc` once over ensemble means.
-7. Output only the two CSV blocks; no interleaved narration unless requested.
+7. Sort both final output blocks by `Society`, `Year`, and canonical `Node` order (`Helm`, `Shield`, `Lore`, `Stewards`, `Craft`, `Hands`, `Archive`, `Flow`).
+8. Output only the two CSV blocks; no interleaved narration unless requested.
 
 ## Scorer isolation rules
 - No cross-pass peeking

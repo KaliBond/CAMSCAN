@@ -380,6 +380,7 @@ Return exactly **8 rows**, one for each node:
 
 - Scores must be integers from 1 to 10
 - Each node must appear exactly once
+- Sort rows by `Society`, then `Year`, then canonical `Node` order: `Helm`, `Shield`, `Lore`, `Stewards`, `Craft`, `Hands`, `Archive`, `Flow`
 - Return raw scores only
 - Do not include notes
 - Do not include explanations
