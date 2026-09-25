@@ -46,7 +46,8 @@ lagged edge survives false-discovery correction on either panel. This gives litt
 CAMS as a fixed causal graph that can be estimated once and transported across societies.
 
 **The central result.** The eight functions behave as a shared response basis, non-exchangeable
-coordinates in a common low-dimensional field, not as a fixed relational circuit.
+coordinates in a common low-dimensional field, not as a fixed relational circuit. The same functional
+basis appears in substantially different dynamical morphologies.
 
 **The threshold chain.** Among split configurations (all-positive and all-negative states excluded), about
 71% lie within one node flip of the shared threshold chain in both panels. Between 13% (B) and 38% (W) lie
