@@ -1,0 +1,52 @@
+[P1] society T observed | indep | circular-shift | 1-factor | P(1f<=obs)
+[P1] Brazil         146   11 |   93.9 |   72.5 |   26.8 | 0.000
+[P1] Cambodia       177   15 |   86.4 |   44.7 |   28.8 | 0.000
+[P1] Colombia       152   12 |   36.6 |   21.9 |   23.4 | 0.000
+[P1] Greece         152   29 |   80.2 |   53.8 |   35.3 | 0.120
+[P1] Hong_Kong      116    6 |   40.4 |   27.6 |   10.3 | 0.020
+[P1] Indonesia       85    4 |   18.9 |   10.2 |   12.4 | 0.000
+[P1] Israel          80    6 |   57.4 |   14.6 |   12.4 | 0.010
+[P1] Italy          123    7 |   70.4 |   34.7 |    9.7 | 0.060
+[P1] Japan          152   27 |   71.7 |   47.6 |   35.1 | 0.050
+[P1] Laos           152   22 |   60.9 |   35.9 |   37.7 | 0.000
+[P1] Latvia         125   25 |   67.0 |   49.8 |   27.0 | 0.400
+[P1] Lebanon         83    4 |   38.4 |   16.9 |   11.0 | 0.000
+[P1] Mongolia       177   21 |  115.9 |   42.2 |   40.7 | 0.000
+[P1] NewZealand     152   39 |   75.6 |   59.7 |   42.3 | 0.315
+[P1] Philippines    137   33 |   85.2 |   66.8 |   40.7 | 0.050
+[P1] Saudi_Arabia    95   14 |   56.1 |   28.9 |   19.2 | 0.035
+[P1] Singapore       96   25 |   50.6 |   40.1 |   26.2 | 0.410
+[P1] South_Africa    84   10 |   43.3 |   37.0 |   13.5 | 0.050
+[P1] Ukraine         50   26 |   44.4 |   38.0 |   29.3 | 0.175
+[P1] Venezuela       56   16 |   42.9 |   33.4 |   18.5 | 0.255
+[P1] all below circular null: True
+[P2] mean PC1 share of K-S var = 0.852; societies below 5% tail of 1f null = 10/20
+[P3] rank 1: sign acc 0.886, exact config 0.535
+[P3] rank 2: sign acc 0.905, exact config 0.532
+[P3] rank 3: sign acc 0.924, exact config 0.625
+[P4] neg-in-split W=0.138 p=0.0056  high->low: ['Hands', 'Stewards', 'Flow', 'Craft', 'Helm', 'Shield', 'Archive', 'Lore']
+[P4] loading      W=0.297 p=0.0001  high->low: ['Flow', 'Helm', 'Stewards', 'Archive', 'Hands', 'Shield', 'Craft', 'Lore']
+[P4] threshold    W=0.223 p=0.0001  high->low: ['Hands', 'Craft', 'Flow', 'Stewards', 'Helm', 'Shield', 'Archive', 'Lore']
+[P5] median threshold (G SD) by node: Helm:-0.12, Shield:-0.48, Lore:-0.51, Stewards:-0.33, Craft:-0.06, Hands:+0.38, Archive:-0.27, Flow:-0.04
+[P5] median loading by node: Helm:2.06, Shield:1.96, Lore:1.78, Stewards:2.07, Craft:2.12, Hands:1.91, Archive:1.94, Flow:2.59
+[P5] median fraction positive by node: Helm:0.53, Shield:0.63, Lore:0.69, Stewards:0.47, Craft:0.50, Hands:0.32, Archive:0.57, Flow:0.47
+[P6] mean pairwise sign corr 0.558; (society, #pairs<=0, #constant nodes): [('Brazil', 0, 0), ('Cambodia', 0, 0), ('Colombia', 0, 1), ('Greece', 0, 0), ('Hong_Kong', 0, 0), ('Indonesia', 0, 3), ('Israel', 0, 0), ('Italy', 0, 0), ('Japan', 0, 0), ('Laos', 1, 0), ('Latvia', 4, 0), ('Lebanon', 0, 2), ('Mongolia', 0, 0), ('NewZealand', 0, 0), ('Philippines', 0, 0), ('Saudi_Arabia', 0, 0), ('Singapore', 0, 0), ('South_Africa', 0, 0), ('Ukraine', 7, 0), ('Venezuela', 0, 0)]
+[P7] split-config pairwise shared count obs=404, stratified random null mean=261.6, p=0.0010
+[P8] mean Jaccard (split repertoires)=0.072; 1-factor null overlap mean=775.5 (obs 404), p(1f>=obs)=1.000; 1f Jaccard=0.092
+[P8] configs in >=5 societies: 11; top: --+----- n=12 null=12.7; +++++-++ n=11 null=13.1; +-+++-++ n=8 null=8.9; -+------ n=7 null=8.6; +++---+- n=7 null=4.5; +++-++++ n=7 null=6.6
+[P8] configs surviving Bonferroni vs 1f null: []  (node order ['Helm', 'Shield', 'Lore', 'Stewards', 'Craft', 'Hands', 'Archive', 'Flow'])
+[P10] eff repertoire 2.49-21.57; switching 0.063-0.612; rho=0.76
+[P11] rho(PC1 share, eff rep)=-0.87; rho(PC1 share, switching)=-0.66
+[P11] length check: rho(T, eff rep)=0.29
+[P12] adjacent Hamming obs 0.72, shuffled 3.05 (range 1.71-3.85), 1-factor 1.17
+[P13] largest + carrier changes 319/1572=0.203; largest - carrier 737/1309=0.563
+[P14] argmax|r| lag: 0 in 157/160, AC-leads 1, D-leads 2
+[P14] pooled r(lag0) / r(+1): Helm:0.79/0.08, Shield:0.72/0.07, Lore:0.72/0.05, Stewards:0.75/0.10, Craft:0.73/0.08, Hands:0.73/0.09, Archive:0.74/0.08, Flow:0.81/0.13
+[P15] M<=0 -> M>0 transitions 93; split 89 (0.957); of split, never reach all-8+ in spell 58 (0.652)
+[P16] identified prior regimes 85; different config 66 (0.776); median Hamming 2.0; |dM|<=0.1SD: 11/22
+[P17] 1-factor sim (observed AC): split-recovery rate 0.915, config mismatch 0.843
+[P18] near-identical-M pairs 6191; different configs 0.078
+[P19] obs with kappa>=0.8: 120/2390; share of these in top intensity quartile: 0.008333333333333333
+[P20] LOSO AUC rising-vs-falling: M only 0.565; M + 8 signs 0.560
+[P21] after removing 1 factor(s): pairs with same residual sign in all 20 societies: [] (chance ~0.000)
+[P21] after removing 2 factor(s): pairs with same residual sign in all 20 societies: [] (chance ~0.000)

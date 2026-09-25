@@ -1,0 +1,21 @@
+[ties] K==S -> non-positive   mean repertoire 26.4, eff 9.82, switching 0.356, rho(er,sw)=0.61
+[ties] K==S -> positive       mean repertoire 27.7, eff 10.19, switching 0.380, rho(er,sw)=0.82
+[window] 1950-2025 common window
+[window] n=11 eff rep 2.76-15.83, switching 0.173-0.653
+[window] rho(er,sw)=0.76  rho(PC1share,er)=0.12  rho(PC1share,sw)=0.26
+[window]   China         PC1=0.92 eff= 4.72 sw=0.307
+[window]   Poland        PC1=0.89 eff= 7.15 sw=0.267
+[window]   Iran          PC1=0.88 eff=15.83 sw=0.653
+[window]   Argentina     PC1=0.84 eff= 5.02 sw=0.333
+[window]   Russia        PC1=0.82 eff=14.03 sw=0.613
+[window]   Chile         PC1=0.80 eff= 7.15 sw=0.467
+[window]   Norway        PC1=0.75 eff= 3.26 sw=0.173
+[window]   UK            PC1=0.75 eff= 5.70 sw=0.307
+[window]   France        PC1=0.74 eff= 6.18 sw=0.267
+[window]   Germany       PC1=0.69 eff= 2.76 sw=0.213
+[window]   Australia     PC1=0.68 eff=14.83 sw=0.427
+[surrogate] observed repertoire / Hamming vs field-preserving surrogate (k factors kept)
+[surrogate] k=1: repertoire below 5% tail in 6/11; Hamming below 5% tail in 5/11
+[surrogate]   Argentina 13/31.0; Australia 30/40.1; Chile 22/22.7; China 45/46.4; France 21/26.2; Germany 22/18.3; Iran 46/45.0; Norway 15/21.6; Poland 18/32.2; Russia 44/53.1; UK 14/13.3
+[surrogate] k=2: repertoire below 5% tail in 4/11; Hamming below 5% tail in 5/11
+[surrogate]   Argentina 13/31.0; Australia 30/37.2; Chile 22/21.5; China 45/41.7; France 21/24.1; Germany 22/18.1; Iran 46/45.1; Norway 15/19.5; Poland 18/33.3; Russia 44/47.5; UK 14/12.9

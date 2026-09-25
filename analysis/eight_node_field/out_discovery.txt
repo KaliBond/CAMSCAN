@@ -1,0 +1,43 @@
+[P1] society T observed | indep | circular-shift | 1-factor | P(1f<=obs)
+[P1] Argentina       77   13 |   30.5 |   25.1 |   25.4 | 0.000
+[P1] Australia      152   30 |   61.3 |   46.7 |   43.5 | 0.005
+[P1] Chile          152   22 |   45.5 |   39.5 |   24.5 | 0.275
+[P1] China          226   45 |  137.4 |   74.3 |   52.7 | 0.120
+[P1] France         177   21 |   76.3 |   46.3 |   32.1 | 0.010
+[P1] Germany        147   22 |   45.3 |   32.4 |   30.5 | 0.035
+[P1] Iran           152   46 |   92.3 |   70.5 |   44.8 | 0.620
+[P1] Norway         147   15 |   39.9 |   28.4 |   26.9 | 0.000
+[P1] Poland         152   18 |   62.2 |   27.1 |   32.5 | 0.005
+[P1] Russia         227   44 |   95.1 |   80.0 |   62.3 | 0.000
+[P1] UK             147   14 |   21.5 |   18.4 |   12.1 | 0.850
+[P1] all below circular null: True
+[P2] mean PC1 share of K-S var = 0.814; societies below 5% tail of 1f null = 7/11
+[P3] rank 1: sign acc 0.880, exact config 0.500
+[P3] rank 2: sign acc 0.899, exact config 0.543
+[P3] rank 3: sign acc 0.917, exact config 0.596
+[P4] neg-in-split W=0.421 p=0.0001  high->low: ['Hands', 'Helm', 'Flow', 'Shield', 'Stewards', 'Craft', 'Lore', 'Archive']
+[P4] loading      W=0.510 p=0.0001  high->low: ['Flow', 'Stewards', 'Helm', 'Hands', 'Craft', 'Shield', 'Archive', 'Lore']
+[P4] threshold    W=0.497 p=0.0001  high->low: ['Hands', 'Helm', 'Flow', 'Stewards', 'Shield', 'Craft', 'Lore', 'Archive']
+[P5] median threshold (G SD) by node: Helm:-0.25, Shield:-0.35, Lore:-0.91, Stewards:-0.33, Craft:-0.68, Hands:+0.54, Archive:-0.89, Flow:-0.58
+[P5] median loading by node: Helm:2.02, Shield:2.12, Lore:1.43, Stewards:2.05, Craft:1.83, Hands:2.06, Archive:1.64, Flow:2.53
+[P5] median fraction positive by node: Helm:0.61, Shield:0.45, Lore:0.78, Stewards:0.67, Craft:0.77, Hands:0.32, Archive:0.84, Flow:0.73
+[P6] mean pairwise sign corr 0.496; (society, #pairs<=0, #constant nodes): [('Argentina', 3, 0), ('Australia', 0, 0), ('Chile', 0, 0), ('China', 0, 0), ('France', 0, 0), ('Germany', 0, 0), ('Iran', 0, 0), ('Norway', 0, 0), ('Poland', 0, 0), ('Russia', 0, 0), ('UK', 1, 1)]
+[P7] split-config pairwise shared count obs=355, stratified random null mean=180.6, p=0.0010
+[P8] mean Jaccard (split repertoires)=0.149; 1-factor null overlap mean=514.1 (obs 355), p(1f>=obs)=1.000; 1f Jaccard=0.162
+[P8] configs in >=5 societies: 15; top: +++++-++ n=9 null=9.7; -+++++++ n=8 null=7.3; --+----- n=7 null=7.0; ------+- n=7 null=7.0; -++---+- n=7 null=5.2; --+---+- n=6 null=6.4
+[P8] configs surviving Bonferroni vs 1f null: []  (node order ['Helm', 'Shield', 'Lore', 'Stewards', 'Craft', 'Hands', 'Archive', 'Flow'])
+[P10] eff repertoire 4.61-21.82; switching 0.185-0.602; rho=0.61
+[P11] rho(PC1 share, eff rep)=-0.27; rho(PC1 share, switching)=-0.29
+[P11] length check: rho(T, eff rep)=0.70
+[P12] adjacent Hamming obs 0.74, shuffled 2.64 (range 1.40-3.84), 1-factor 1.17
+[P13] largest + carrier changes 311/1323=0.235; largest - carrier 350/838=0.418
+[P14] argmax|r| lag: 0 in 85/88, AC-leads 1, D-leads 2
+[P14] pooled r(lag0) / r(+1): Helm:0.59/0.04, Shield:0.46/0.02, Lore:0.46/0.05, Stewards:0.60/0.06, Craft:0.60/0.02, Hands:0.51/0.02, Archive:0.55/0.08, Flow:0.70/0.01
+[P15] M<=0 -> M>0 transitions 71; split 67 (0.944); of split, never reach all-8+ in spell 45 (0.672)
+[P16] identified prior regimes 69; different config 65 (0.942); median Hamming 3.0; |dM|<=0.1SD: 16/18
+[P17] 1-factor sim (observed AC): split-recovery rate 0.903, config mismatch 0.921
+[P18] near-identical-M pairs 1345; different configs 0.341
+[P19] obs with kappa>=0.8: 66/1756; share of these in top intensity quartile: 0.030303030303030304
+[P20] LOSO AUC rising-vs-falling: M only 0.568; M + 8 signs 0.558
+[P21] after removing 1 factor(s): pairs with same residual sign in all 11 societies: ['Helm-Flow(-)', 'Shield-Craft(-)'] (chance ~0.027)
+[P21] after removing 2 factor(s): pairs with same residual sign in all 11 societies: [] (chance ~0.027)

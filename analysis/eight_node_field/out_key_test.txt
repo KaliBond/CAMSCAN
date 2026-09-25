@@ -1,0 +1,49 @@
+
+==== LOSO within discovery (11) ====
+Contemporaneous leave-one-node-out, 11 held-out societies (mean R2 | mean sign acc | #societies FULL beats model):
+  FA1   R2=0.727 | acc=0.870 | FULL better in 9/11
+  FA2   R2=0.736 | acc=0.868 | FULL better in 8/11
+  FA3   R2=0.745 | acc=0.868 | FULL better in 6/11
+  FULL  R2=0.752 | acc=0.870 | FULL better in 0/11
+Sign-level held-out log-loss (total nats): mean-field 4964.5  pairwise Ising 4886.7  (Ising gain +77.8)
+One-step Delta D out-of-sample R2 (pooled over held-out societies):
+  AR           +0.0655
+  AR+G         +0.0725
+  AR+G2        +0.0738
+  VAR          +0.0709
+  AR+G+VARres  +0.0709
+
+==== Train discovery -> test replication (20 unseen) ====
+Contemporaneous leave-one-node-out, 20 held-out societies (mean R2 | mean sign acc | #societies FULL beats model):
+  FA1   R2=0.768 | acc=0.861 | FULL better in 17/20
+  FA2   R2=0.791 | acc=0.863 | FULL better in 16/20
+  FA3   R2=0.800 | acc=0.868 | FULL better in 11/20
+  FULL  R2=0.806 | acc=0.871 | FULL better in 0/20
+Sign-level held-out log-loss (total nats): mean-field 7586.2  pairwise Ising 7432.5  (Ising gain +153.7)
+One-step Delta D out-of-sample R2 (pooled over held-out societies):
+  AR           +0.0715
+  AR+G         +0.0631
+  AR+G2        +0.0628
+  VAR          +0.0575
+  AR+G+VARres  +0.0576
+
+==== LOSO across all 31 ====
+Contemporaneous leave-one-node-out, 31 held-out societies (mean R2 | mean sign acc | #societies FULL beats model):
+  FA1   R2=0.751 | acc=0.862 | FULL better in 20/31
+  FA2   R2=0.767 | acc=0.866 | FULL better in 22/31
+  FA3   R2=0.775 | acc=0.865 | FULL better in 21/31
+  FULL  R2=0.782 | acc=0.871 | FULL better in 0/31
+Sign-level held-out log-loss (total nats): mean-field 12222.2  pairwise Ising 11641.1  (Ising gain +581.1)
+One-step Delta D out-of-sample R2 (pooled over held-out societies):
+  AR           +0.0583
+  AR+G         +0.0619
+  AR+G2        +0.0614
+  VAR          +0.0575
+  AR+G+VARres  +0.0575
+
+==== Parameter sharing: fit on first 60% (own) or on other societies (shared); test last 40% ====
+  own-FA1              median MSE ratio vs own-FA1 1.000  mean sign acc 0.840  better than own-FA1 in 0/31
+  own-FULL             median MSE ratio vs own-FA1 0.834  mean sign acc 0.840  better than own-FA1 in 19/31
+  shared-FA1           median MSE ratio vs own-FA1 1.020  mean sign acc 0.838  better than own-FA1 in 15/31
+  shared-FULL          median MSE ratio vs own-FA1 0.908  mean sign acc 0.848  better than own-FA1 in 16/31
+  shared-FA1+offsets   median MSE ratio vs own-FA1 1.148  mean sign acc 0.828  better than own-FA1 in 12/31

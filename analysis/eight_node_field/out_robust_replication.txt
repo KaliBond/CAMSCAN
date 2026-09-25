@@ -1,0 +1,24 @@
+[ties] K==S -> non-positive   mean repertoire 17.6, eff 8.76, switching 0.317, rho(er,sw)=0.76
+[ties] K==S -> positive       mean repertoire 17.9, eff 8.76, switching 0.316, rho(er,sw)=0.72
+[window] 1950-2025 common window
+[window] n=14 eff rep 2.08-16.04, switching 0.027-0.747
+[window] rho(er,sw)=0.81  rho(PC1share,er)=-0.74  rho(PC1share,sw)=-0.75
+[window]   Italy         PC1=1.00 eff= 3.13 sw=0.041
+[window]   Lebanon       PC1=0.98 eff= 3.86 sw=0.053
+[window]   Israel        PC1=0.98 eff= 2.08 sw=0.027
+[window]   Brazil        PC1=0.98 eff= 3.86 sw=0.320
+[window]   Cambodia      PC1=0.94 eff= 6.15 sw=0.213
+[window]   Indonesia     PC1=0.92 eff= 2.64 sw=0.040
+[window]   Mongolia      PC1=0.89 eff= 8.11 sw=0.227
+[window]   Colombia      PC1=0.88 eff= 4.74 sw=0.213
+[window]   Japan         PC1=0.87 eff= 9.30 sw=0.333
+[window]   Laos          PC1=0.84 eff= 5.52 sw=0.307
+[window]   NewZealand    PC1=0.80 eff= 8.08 sw=0.427
+[window]   Singapore     PC1=0.73 eff= 6.25 sw=0.520
+[window]   Greece        PC1=0.73 eff=16.04 sw=0.747
+[window]   Latvia        PC1=0.68 eff= 7.29 sw=0.267
+[surrogate] observed repertoire / Hamming vs field-preserving surrogate (k factors kept)
+[surrogate] k=1: repertoire below 5% tail in 10/20; Hamming below 5% tail in 10/20
+[surrogate]   Brazil 11/21.5; Cambodia 15/25.3; Colombia 12/23.3; Greece 29/33.3; Hong_Kong 6/8.4; Indonesia 4/7.0; Israel 6/12.8; Italy 7/8.7; Japan 27/30.5; Laos 22/40.2; Latvia 25/33.2; Lebanon 4/9.9; Mongolia 21/31.7; NewZealand 39/38.8; Philippines 33/36.2; Saudi_Arabia 14/17.7; Singapore 25/22.9; South_Africa 10/11.8; Ukraine 26/29.1; Venezuela 16/18.8
+[surrogate] k=2: repertoire below 5% tail in 10/20; Hamming below 5% tail in 10/20
+[surrogate]   Brazil 11/17.4; Cambodia 15/21.8; Colombia 12/22.2; Greece 29/30.7; Hong_Kong 6/9.4; Indonesia 4/6.8; Israel 6/15.8; Italy 7/9.7; Japan 27/29.3; Laos 22/35.5; Latvia 25/29.8; Lebanon 4/10.1; Mongolia 21/31.1; NewZealand 39/37.3; Philippines 33/34.0; Saudi_Arabia 14/14.6; Singapore 25/22.1; South_Africa 10/11.5; Ukraine 26/28.0; Venezuela 16/18.9
