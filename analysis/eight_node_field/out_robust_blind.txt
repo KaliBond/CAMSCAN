@@ -1,0 +1,9 @@
+[ties] K==S -> non-positive   mean repertoire 17.6, eff 9.58, switching 0.500, rho(er,sw)=0.91
+[ties] K==S -> positive       mean repertoire 18.2, eff 9.62, switching 0.481, rho(er,sw)=0.86
+[window] 1950-2025 common window
+[window] skipped (no calendar years)
+[surrogate] observed repertoire / Hamming vs field-preserving surrogate (k factors kept)
+[surrogate] k=1: repertoire below 5% tail in 1/12; Hamming below 5% tail in 1/12
+[surrogate]   Society_A 17/19.3; Society_B 27/26.9; Society_C 17/17.5; Society_D 18/17.9; Society_E 25/31.7; Society_F 19/22.9; Society_G 15/15.2; Society_H 16/19.3; Society_I 14/14.3; Society_J 14/11.3; Society_K 13/14.0; Society_L 16/17.1
+[surrogate] k=2: repertoire below 5% tail in 1/12; Hamming below 5% tail in 2/12
+[surrogate]   Society_A 17/15.3; Society_B 27/26.8; Society_C 17/17.2; Society_D 18/16.5; Society_E 25/29.5; Society_F 19/20.2; Society_G 15/14.3; Society_H 16/18.5; Society_I 14/12.4; Society_J 14/11.3; Society_K 13/14.3; Society_L 16/17.2

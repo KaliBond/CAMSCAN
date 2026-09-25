@@ -99,6 +99,62 @@ A model consistent with everything here is:
 The loading λ is **shared across societies** (unlike the original box, where it varied by society),
 the threshold μ is society-specific, and there are no lagged cross-node terms.
 
+## Blind panel (JUNO_Blind_motif, 12 societies × 61 steps)
+
+This is the panel the propositions were originally derived on. Society identities are withheld, and no
+attempt was made to recover them. The data aren't committed; set `BLIND` / `BLIND_ENV` to the CSV paths.
+Outputs: `out_blind.txt`, `out_robust_blind.txt`, `out_key_test_blind.txt`, `out_blind_extras.txt`.
+
+**Reproduction.** The battery reproduces the original figures almost exactly: PC1 82.9%; rank-1/2/3
+sign accuracy 0.887/0.920/0.936; W = 0.33–0.38 (p = 1e-4); effective repertoire 4.96–20.40; switching
+0.283–0.700; ρ = 0.91, −0.83, −0.74; Hamming 1.07; +/− carrier changes 101 and 156; lag 0 in 88/96;
+44 recoveries, 40 split, 19/40 terminate early; 34/36 and 14/14 different configurations; 58%
+many-to-one; 28 cases of κ ≥ 0.8; AUC 0.628 vs 0.621; Lore–Archive(+) residual in 12/12.
+Every pair is positively sign-correlated in all 12 societies.
+
+This panel has almost no repeated rows (except Society_K, 20%) and few ties (3%). Every series is 61
+steps, so length can't confound P11. That is why P2, P6, P11 and P18 hold here but weaken on the
+wintermute corpora. The differences between panels come from the data, not the method.
+
+- **P2:** 3/12 below the 5% tail of the Gaussian one-factor null (original 1/12). With the
+  field-preserving surrogate, 1/12. ✅ on this panel.
+
+**Decisive test on the blind panel**
+
+| Design | FA1 | FA2 | FA3 | FULL | Ising vs mean-field (log-loss gain) |
+|---|---|---|---|---|---|
+| Leave one society out, blind | R² 0.753 | 0.777 | **0.787** | 0.783 | −24 (Ising worse) |
+| Train on 31 corpus societies → blind | 0.751 | 0.758 | **0.786** | **0.786** | −45 (Ising worse) |
+
+- **Contemporaneous:** the structure beyond one field is fully captured by 2–3 shared factors.
+  Unconstrained pairwise relations add nothing. Pairwise sign couplings *lose* to a mean-field model out
+  of sample (and beat a loading-weighted one in only 7/12).
+- **Dynamic:** the common field adds 1.3 points of out-of-sample ΔD R² over own-node AR (0.088 → 0.101).
+  Cross-lagged relations among field residuals add nothing (0.1005 → 0.1013).
+- **Parameter sharing** (median MSE relative to the society's own FA1):
+
+  | Shared parameters | from other blind societies | from the 31 corpus societies |
+  |---|---|---|
+  | loadings (FA1) | **0.94** (better in 8/12) | **0.99** (7/12) |
+  | loadings + node offsets | 1.12 | 1.18 |
+  | full covariance | **0.86** (10/12) | **0.85** (10/12) |
+  | own full covariance | 1.13 (overfits) | — |
+
+  Loadings are conserved, and they transfer *across corpora*. Thresholds are society-specific. The shared
+  second-order structure (the 2–3 factors) transfers too.
+- **Node order across corpora:** blind vs corpus-31 mean ranks agree at ρ = 0.82 (threshold), 0.83
+  (loading) and 0.83 (fraction positive). Some blind societies may also appear in the corpus, so this isn't
+  a fully independent replication.
+- **Measurement floor:** residual variance is 3.4× the scorer-mean error variance after one factor, but
+  only **2.0×** after two (≤ 1.3× in 5/12 societies). Anything beyond two fields is close to what five
+  scorers can resolve. Scorer disagreement isn't higher near the K = S threshold (7/12, 0.656 vs 0.669).
+
+**Verdict on the central question (blind panel).** The data support *conserved node response functions
+(shared loadings) to two or three shared latent fields, with society-specific thresholds*. They do not
+support an additional relational grammar. Held out, explicit node-to-node relations (same-time or lagged,
+continuous or sign-level) never beat the low-rank field model, and the residual they would have to explain
+sits at about twice scorer noise.
+
 ## Caveats the data raise
 
 * **Repeated rows.** In many series a large share of year-to-year transitions repeat all 32 scores exactly:

@@ -1,0 +1,20 @@
+[signs] blind LOSO log-loss: MF 2129, weighted MF 2163, Ising 2153; Ising beats weighted-MF in 7/12
+[order] threshold         blind vs corpus-31 mean-rank Spearman +0.82
+[order] loading           blind vs corpus-31 mean-rank Spearman +0.83
+[order] fraction positive blind vs corpus-31 mean-rank Spearman +0.83
+[noise] residual variance / scorer-mean error variance ((SD_K^2+SD_S^2)/5), median over nodes
+[noise]   Society_A  noise var 0.058; k=1 11.2; k=2 3.6
+[noise]   Society_B  noise var 0.096; k=1 8.9; k=2 4.6
+[noise]   Society_C  noise var 0.409; k=1 1.7; k=2 1.2
+[noise]   Society_D  noise var 0.320; k=1 3.9; k=2 2.5
+[noise]   Society_E  noise var 0.086; k=1 8.9; k=2 4.7
+[noise]   Society_F  noise var 0.284; k=1 2.9; k=2 1.6
+[noise]   Society_G  noise var 0.522; k=1 1.1; k=2 0.8
+[noise]   Society_H  noise var 0.261; k=1 2.0; k=2 1.3
+[noise]   Society_I  noise var 0.158; k=1 3.9; k=2 1.7
+[noise]   Society_J  noise var 0.253; k=1 2.9; k=2 2.4
+[noise]   Society_K  noise var 0.248; k=1 2.5; k=2 0.9
+[noise]   Society_L  noise var 0.189; k=1 3.9; k=2 2.7
+[noise] median across societies: k=1 3.4, k=2 2.0
+[noise] mean SD_K near threshold (|K-S|<=0.5) 0.656 vs away 0.669; higher near threshold in 7/12
+[fit] threshold order vs leave-one-out blind consensus: A:+0.80, B:+0.74, C:+0.64, D:+0.67, E:+0.85, F:+0.24, G:+0.26, H:-0.23, I:+0.70, J:+0.43, K:+0.52, L:-0.05

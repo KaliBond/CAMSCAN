@@ -25,7 +25,7 @@ Parameter-sharing test (within held-out society, first 60% -> last 40%)
       shared-FA1+offsets: also node offsets shared; only the society's overall level is local
       own-FULL / shared-FULL: unconstrained covariance
 
-Usage: python key_test.py
+Usage: python key_test.py [corpus|blind]
 """
 import numpy as np
 from sklearn.decomposition import FactorAnalysis
@@ -34,9 +34,12 @@ from sklearn.metrics import log_loss
 
 from load import load, derive, NODES
 
+import sys
+MODE = sys.argv[1] if len(sys.argv) > 1 else "corpus"
 disc, repl = load("discovery"), load("replication")
 ALL = {**disc, **repl}
-D = {k: derive(a)["D"] for k, (y, a) in ALL.items()}
+BL = load("blind") if MODE == "blind" else {}
+D = {k: derive(a)["D"] for k, (y, a) in {**ALL, **BL}.items()}
 rng = np.random.default_rng(1)
 
 
@@ -191,6 +194,27 @@ def report(tag, train_sets):
     return agg_r
 
 
+def sharing_table(pairs, title):
+    print(f"\n==== {title} ====")
+    tab = {}
+    for train, k in pairs:
+        for m, (mse, acc) in sharing(train, k).items():
+            tab.setdefault(m, []).append((mse, acc))
+    base = np.array([x[0] for x in tab["own-FA1"]])
+    for m, v in tab.items():
+        v = np.array(v)
+        print(f"  {m:20s} median MSE ratio vs own-FA1 {np.median(v[:, 0] / base):.3f}  mean sign acc {v[:, 1].mean():.3f}  "
+              f"better than own-FA1 in {(v[:, 0] < base).sum()}/{len(base)}")
+
+
+if MODE == "blind":
+    nb = list(BL)
+    report("LOSO within blind (12)", [([j for j in nb if j != k], [k]) for k in nb])
+    report("Train 31 corpus societies -> test blind 12", [(list(ALL), nb)])
+    sharing_table([([j for j in nb if j != k], k) for k in nb], "Parameter sharing within blind (shared = other blind societies)")
+    sharing_table([(list(ALL), k) for k in nb], "Parameter sharing: shared parameters from the 31 corpus societies")
+    sys.exit()
+
 names_d, names_r = list(disc), list(repl)
 # 1) leave-one-society-out within discovery
 report("LOSO within discovery (11)", [([j for j in names_d if j != k], [k]) for k in names_d])
@@ -200,13 +224,5 @@ report("Train discovery -> test replication (20 unseen)", [(names_d, names_r)])
 allr = report("LOSO across all 31", [([j for j in ALL if j != k], [k]) for k in ALL])
 
 # 4) parameter sharing within held-out society
-print("\n==== Parameter sharing: fit on first 60% (own) or on other societies (shared); test last 40% ====")
-tab = {}
-for k in ALL:
-    for m, (mse, acc) in sharing([j for j in ALL if j != k], k).items():
-        tab.setdefault(m, []).append((mse, acc))
-base = np.array([x[0] for x in tab["own-FA1"]])
-for m, v in tab.items():
-    v = np.array(v)
-    print(f"  {m:20s} median MSE ratio vs own-FA1 {np.median(v[:, 0] / base):.3f}  mean sign acc {v[:, 1].mean():.3f}  "
-          f"better than own-FA1 in {(v[:, 0] < base).sum()}/{len(base)}")
+sharing_table([([j for j in ALL if j != k], k) for k in ALL],
+              "Parameter sharing: fit on first 60% (own) or on other societies (shared); test last 40%")

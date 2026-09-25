@@ -1,0 +1,46 @@
+[P1] society T observed | indep | circular-shift | 1-factor | P(1f<=obs)
+[P1] Society_A       61   17 |   38.3 |   33.7 |   20.1 | 0.195
+[P1] Society_B       61   27 |   51.3 |   42.4 |   26.7 | 0.625
+[P1] Society_C       61   17 |   39.5 |   27.4 |   19.4 | 0.245
+[P1] Society_D       61   18 |   38.6 |   32.2 |   19.3 | 0.355
+[P1] Society_E       61   25 |   46.6 |   40.3 |   31.7 | 0.015
+[P1] Society_F       61   19 |   46.1 |   32.3 |   24.8 | 0.040
+[P1] Society_G       61   15 |   51.9 |   35.1 |   20.7 | 0.045
+[P1] Society_H       61   16 |   50.9 |   31.0 |   16.6 | 0.460
+[P1] Society_I       61   14 |   36.0 |   24.6 |   17.2 | 0.145
+[P1] Society_J       61   14 |   40.4 |   29.6 |   18.7 | 0.105
+[P1] Society_K       61   13 |   48.5 |   28.1 |   16.8 | 0.115
+[P1] Society_L       61   16 |   37.4 |   30.8 |   17.2 | 0.425
+[P1] all below circular null: True
+[P2] mean PC1 share of K-S var = 0.829; societies below 5% tail of 1f null = 3/12
+[P3] rank 1: sign acc 0.887, exact config 0.519
+[P3] rank 2: sign acc 0.920, exact config 0.593
+[P3] rank 3: sign acc 0.936, exact config 0.645
+[P4] neg-in-split W=0.330 p=0.0001  high->low: ['Hands', 'Helm', 'Flow', 'Stewards', 'Lore', 'Craft', 'Shield', 'Archive']
+[P4] loading      W=0.377 p=0.0001  high->low: ['Flow', 'Hands', 'Stewards', 'Helm', 'Craft', 'Archive', 'Shield', 'Lore']
+[P4] threshold    W=0.379 p=0.0001  high->low: ['Hands', 'Helm', 'Stewards', 'Flow', 'Craft', 'Lore', 'Shield', 'Archive']
+[P5] median threshold (G SD) by node: Helm:-0.15, Shield:-0.40, Lore:-0.17, Stewards:-0.04, Craft:-0.57, Hands:+0.06, Archive:-0.64, Flow:-0.06
+[P5] median loading by node: Helm:2.18, Shield:1.74, Lore:1.82, Stewards:2.46, Craft:2.35, Hands:2.55, Archive:1.77, Flow:2.86
+[P5] median fraction positive by node: Helm:0.60, Shield:0.70, Lore:0.66, Stewards:0.60, Craft:0.66, Hands:0.50, Archive:0.72, Flow:0.56
+[P6] mean pairwise sign corr 0.572; (society, #pairs<=0, #constant nodes): [('Society_A', 0, 0), ('Society_B', 0, 0), ('Society_C', 0, 0), ('Society_D', 0, 0), ('Society_E', 0, 0), ('Society_F', 0, 0), ('Society_G', 0, 0), ('Society_H', 0, 0), ('Society_I', 0, 0), ('Society_J', 0, 0), ('Society_K', 0, 0), ('Society_L', 0, 0)]
+[P7] split-config pairwise shared count obs=179, stratified random null mean=108.7, p=0.0010
+[P8] mean Jaccard (split repertoires)=0.095; 1-factor null overlap mean=247.3 (obs 179), p(1f>=obs)=1.000; 1f Jaccard=0.111
+[P8] configs in >=5 societies: 6; top: --+----- n=7 null=6.3; ------+- n=6 null=7.2; -++---+- n=6 null=3.8; +++++-++ n=6 null=6.5; -+++++++ n=6 null=4.6; -++++-+- n=5 null=2.3
+[P8] configs surviving Bonferroni vs 1f null: []  (node order ['Helm', 'Shield', 'Lore', 'Stewards', 'Craft', 'Hands', 'Archive', 'Flow'])
+[P10] eff repertoire 4.96-20.40; switching 0.283-0.700; rho=0.91
+[P11] rho(PC1 share, eff rep)=-0.83; rho(PC1 share, switching)=-0.74
+/home/user/CAMSCAN/analysis/eight_node_field/propositions.py:177: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  pr("P11", f"length check: rho(T, eff rep)={spearmanr(Ts, er)[0]:.2f}")
+[P11] length check: rho(T, eff rep)=nan
+[P12] adjacent Hamming obs 1.07, shuffled 3.26 (range 2.79-3.80), 1-factor 1.52
+[P13] largest + carrier changes 101/546=0.185; largest - carrier 156/376=0.415
+[P14] argmax|r| lag: 0 in 88/96, AC-leads 2, D-leads 6
+[P14] pooled r(lag0) / r(+1): Helm:0.59/-0.00, Shield:0.54/0.05, Lore:0.59/0.05, Stewards:0.58/0.08, Craft:0.60/0.03, Hands:0.57/0.03, Archive:0.59/0.12, Flow:0.70/0.07
+[P15] M<=0 -> M>0 transitions 44; split 40 (0.909); of split, never reach all-8+ in spell 19 (0.475)
+[P16] identified prior regimes 36; different config 34 (0.944); median Hamming 3.0; |dM|<=0.1SD: 14/14
+[P17] 1-factor sim (observed AC): split-recovery rate 0.828, config mismatch 0.910
+[P18] near-identical-M pairs 138; different configs 0.580
+[P19] obs with kappa>=0.8: 28/732; share of these in top intensity quartile: 0.03571428571428571
+[P20] LOSO AUC rising-vs-falling: M only 0.628; M + 8 signs 0.621
+[P21] after removing 1 factor(s): pairs with same residual sign in all 12 societies: ['Lore-Archive(+)', 'Craft-Archive(-)'] (chance ~0.014)
+[P21] after removing 2 factor(s): pairs with same residual sign in all 12 societies: [] (chance ~0.014)

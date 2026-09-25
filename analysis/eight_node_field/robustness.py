@@ -37,10 +37,13 @@ for k, (yrs, a) in data.items():
     d = derive(a[m]); c = codes(d["X"])
     er.append(eff_repertoire(c)); sw.append(switching(c)); sh.append(factor_fit(d["D"], 1)[3][0]); keep.append(k)
 er, sw, sh = map(np.array, (er, sw, sh))
-print(f"[window] n={len(keep)} eff rep {er.min():.2f}-{er.max():.2f}, switching {sw.min():.3f}-{sw.max():.3f}")
-print(f"[window] rho(er,sw)={spearmanr(er, sw)[0]:.2f}  rho(PC1share,er)={spearmanr(sh, er)[0]:.2f}  rho(PC1share,sw)={spearmanr(sh, sw)[0]:.2f}")
-for k, a, b, c in sorted(zip(keep, sh, er, sw), key=lambda r: -r[1]):
-    print(f"[window]   {k:13s} PC1={a:.2f} eff={b:5.2f} sw={c:.3f}")
+if len(keep) < 3:
+    print("[window] skipped (no calendar years)")
+else:
+    print(f"[window] n={len(keep)} eff rep {er.min():.2f}-{er.max():.2f}, switching {sw.min():.3f}-{sw.max():.3f}")
+    print(f"[window] rho(er,sw)={spearmanr(er, sw)[0]:.2f}  rho(PC1share,er)={spearmanr(sh, er)[0]:.2f}  rho(PC1share,sw)={spearmanr(sh, sw)[0]:.2f}")
+    for k, a, b, c in sorted(zip(keep, sh, er, sw), key=lambda r: -r[1]):
+        print(f"[window]   {k:13s} PC1={a:.2f} eff={b:5.2f} sw={c:.3f}")
 
 # (c) field-preserving surrogates
 print("[surrogate] observed repertoire / Hamming vs field-preserving surrogate (k factors kept)")

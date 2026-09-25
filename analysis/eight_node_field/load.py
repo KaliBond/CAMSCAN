@@ -49,7 +49,24 @@ def _annual_block(df):
     return best, arr  # arr: T x 8 x 4 (C,K,S,A)
 
 
+BLIND = os.environ.get("BLIND", "/root/.claude/uploads/7fc0cf52-48f9-5e67-80f0-06feacaf7d85/f1d0f0e4-JUNO_Blind_motif.csv")
+
+
+def load_blind(path=BLIND):
+    """JUNO blind motif panel: Society_ID, T_Offset, Node, C, K, S, A (identities withheld)."""
+    df = pd.read_csv(path).rename(columns={"Society_ID": "Society", "T_Offset": "Year", "C": "Coherence",
+                                            "K": "Capacity", "S": "Stress", "A": "Abstraction"})
+    out = {}
+    for soc, g in df.groupby("Society"):
+        blk = _annual_block(g.groupby(["Year", "Node"], as_index=False)[DIMS].mean())
+        if blk is not None:
+            out[soc] = blk
+    return out
+
+
 def load(which="discovery"):
+    if which == "blind":
+        return load_blind()
     canon = sorted(glob.glob(f"{WM}/data/v2.3/canonical/*_ENS_*_cleaned.csv"))
     canon = [p for p in canon if "LatimVetus" not in p]
     canon_names = {os.path.basename(p).split("_ENS_")[0] for p in canon}
