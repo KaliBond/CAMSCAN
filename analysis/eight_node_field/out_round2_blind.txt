@@ -1,0 +1,28 @@
+==== blind: 12 societies ====
+[F1] k=1 RMSE D(t+1): base 1.40931; linear 1.42464 (better in 3/12, p=0.092); field-regime 1.43772 (better in 1/12, p=0.001); sign-config 1.44001 (better in 2/12, p=0.002)
+[F1] k=3 RMSE D(t+1): base 1.40380; linear 1.41396 (better in 5/12, p=0.176); field-regime 1.42492 (better in 2/12, p=0.027); sign-config 1.42864 (better in 2/12, p=0.009)
+[F2] GBM RMSE: 3-factor+own 1.5363 vs +all other nodes 1.5989; others worse in 10/12, p=0.0161
+[F3] X(t+1): 3f+own sign logloss 0.3335 acc 0.8648 exact 0.500 | +7 other signs logloss 0.3421 acc 0.8622 exact 0.492; worse in 10/12, p=0.0024
+[F4] X(t) from leave-node-out field: field          logloss 0.4302
+[F4] X(t) from leave-node-out field: field+dir      logloss 0.4289 (better than field-only in 8/12, p=1.10e-01)
+[F4] X(t) from leave-node-out field: field+lag      logloss 0.3069 (better than field-only in 12/12, p=4.88e-04)
+[F4] X(t) from leave-node-out field: field+lag+dir  logloss 0.3000 (better than field-only in 12/12, p=4.88e-04)
+[F4] direction added to field+lag: better in 12/12, p=0.000
+[F5] held-out mean chain distance: learned order 0.653 vs random 0.856; mean held-out percentile 0.199; permutation p=0.0005
+[F5] pooled best order (2 tied), easiest->hardest: Shield > Lore > Archive > Craft > Helm > Flow > Stewards > Hands
+[F6] split states: exactly on shared chain 0.133; within 1 flip 0.712; mean distance 1.270 vs random orders 1.617
+[F7] Kendall tau between halves: same society 0.425, different societies 0.126; permutation p=0.0015
+[F8] held-out split states, exact nested match: own-half order 0.279 vs shared 0.118 (p=0.019); Hamming 1.811 vs 2.222 (p=0.054)
+[F9] 44 up-crossings; already positive: Archive 0.818, Shield 0.773, Lore 0.727, Helm 0.705, Craft 0.659, Flow 0.545, Stewards 0.432, Hands 0.386
+[F9] never positive during the spell: Stewards 0.273, Hands 0.273, Flow 0.227, Helm 0.136, Lore 0.114, Craft 0.091, Shield 0.068, Archive 0.068
+[F10] recovery windows k=1: standardized RMSE no-grammar 0.5598 vs window-grammar 0.5833; better in 1/12, p=0.003
+[F10] recovery windows k=3: standardized RMSE no-grammar 0.5481 vs window-grammar 0.5721; better in 2/12, p=0.012
+[F10] decline  windows k=1: standardized RMSE no-grammar 0.7431 vs window-grammar 0.7852; better in 3/12, p=0.151
+[F10] decline  windows k=3: standardized RMSE no-grammar 0.7337 vs window-grammar 0.7527; better in 6/12, p=0.519
+[F11] k=1: held-out log-lik gain of shared innovation correlation vs independent (nats/step) +3.030; positive in 12/12
+[F11] k=3: held-out log-lik gain of shared innovation correlation vs independent (nats/step) +3.005; positive in 12/12
+[F11] k=5: held-out log-lik gain of shared innovation correlation vs independent (nats/step) +3.009; positive in 12/12
+[F12] most consistent lagged edges (source->target, #societies positive, sign-test p, BH q): Flow->Lore 10/12 p=0.0386 q=0.720; Archive->Craft 10/12 p=0.0386 q=0.720; Flow->Archive 2/12 p=0.0386 q=0.720; Shield->Helm 3/12 p=0.1460 q=0.944; Craft->Shield 9/12 p=0.1460 q=0.944; Lore->Craft 3/12 p=0.1460 q=0.944
+[F12] Helm->Shield: positive in 8/12, p=0.3877, q=0.944
+[F12] Shield->Helm: positive in 3/12, p=0.1460, q=0.944
+[F12] edges with q<0.05: 0/56
