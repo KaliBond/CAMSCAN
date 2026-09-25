@@ -1,0 +1,4 @@
+[F7] blind: 8/12 societies with >= 10 split states per half; tau same 0.420 vs different 0.211; p=0.0185
+[F8] blind: exact nested match own-half 0.283 vs shared 0.139 (p=0.099, own better in 8/16); Hamming 1.782 vs 2.136 (p=0.211)
+[F7] corpus: 30/31 societies with >= 10 split states per half; tau same 0.399 vs different 0.138; p=0.0005
+[F8] corpus: exact nested match own-half 0.379 vs shared 0.376 (p=0.751, own better in 26/60); Hamming 1.724 vs 1.877 (p=0.258)
