@@ -1,0 +1,14 @@
+split states n=389; best distance 1.080; random mean 1.610
+user order      dist 1.080  percentile 0.0000  Shield > Lore > Archive > Craft > Helm > Flow > Stewards > Hands
+recovery order  dist 1.188  percentile 0.0033  Archive > Shield > Lore > Helm > Craft > Flow > Stewards > Hands
+chain optimum   dist 1.080  percentile 0.0000  Shield > Lore > Archive > Craft > Helm > Flow > Stewards > Hands
+orders within 0.02 of optimum: 5; node position range among them:
+  Helm      positions 4-6 (mean 4.8)
+  Shield    positions 0-0 (mean 0.0)
+  Lore      positions 1-3 (mean 1.8)
+  Stewards  positions 4-6 (mean 5.2)
+  Craft     positions 1-3 (mean 2.6)
+  Hands     positions 7-7 (mean 7.0)
+  Archive   positions 1-2 (mean 1.6)
+  Flow      positions 5-5 (mean 5.0)
+Kendall tau user vs recovery order 0.79; user vs optimum 1.00

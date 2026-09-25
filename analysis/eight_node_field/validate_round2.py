@@ -204,6 +204,7 @@ def mean_dist(H):  # H: 256 histogram -> mean distance for every order
 
 
 def best_order(H):
+    H = H.copy(); H[0] = H[255] = 0          # learn from split states only
     md = mean_dist(H); best = np.flatnonzero(md == md.min())
     return best, md
 
@@ -220,7 +221,7 @@ null = np.array([np.mean([mean_dist(hist(X[k]))[rng.integers(len(ORD))] for k in
 p5 = (1 + (null <= np.mean(learned_d)).sum()) / 2001
 Hall = sum(hist(X[k]) for k in names)
 ball, mdall = best_order(Hall)
-ranks = np.argsort(np.argsort(ORD[ball], axis=1), axis=1).mean(0)   # mean position per node
+ranks = np.argsort(ORD[ball], axis=1).mean(0)   # mean position of each node
 shared = [NODES[i] for i in np.argsort(ranks)]
 pr("F5", f"held-out mean chain distance: learned order {np.mean(learned_d):.3f} vs random {np.mean(rand_d):.3f}; "
          f"mean held-out percentile {np.mean(pct):.3f}; permutation p={p5:.4f}")
@@ -240,7 +241,7 @@ pr("F6", f"split states: exactly on shared chain {np.mean(on):.3f}; within 1 fli
 # F7: split-half order stability
 def order_ranks(H):
     b, _ = best_order(H)
-    return np.argsort(np.argsort(ORD[b], axis=1), axis=1).mean(0)   # mean position, averaged over ties
+    return np.argsort(ORD[b], axis=1).mean(0)   # mean position of each node, averaged over ties
 
 
 halves = {}
